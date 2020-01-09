@@ -3,6 +3,9 @@
 .mvn/
 *.iml
 
+#react
+node_modules
+
 #target folder
 target/
 

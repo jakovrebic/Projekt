@@ -1,8 +1,11 @@
 package hr.fer.projekt.projekt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -32,9 +35,16 @@ public class ElData {
     private Double price;
 
     /**
+     * Za automatsko vođenje evidencije da li se entry promijenio
+     */
+    private @Version
+    @JsonIgnore
+    Long version;
+
+    /**
      * Default konstruktor da Hibernate bude sretan
      */
-    private ElData(){
+    private ElData() {
 
     }
 
@@ -54,6 +64,7 @@ public class ElData {
         ElData elData = (ElData) o;
         return Objects.equals(time, elData.time) &&
                 Objects.equals(volume, elData.volume) &&
+                Objects.equals(version, elData.version) &&
                 Objects.equals(price, elData.price);
     }
 
@@ -117,4 +128,19 @@ public class ElData {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    /**
+     * Getter
+     */
+    public Long getVersion() {
+        return version;
+    }
+
+    /**
+     * Setter
+     */
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
 }
