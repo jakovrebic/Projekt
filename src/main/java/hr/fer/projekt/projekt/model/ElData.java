@@ -32,6 +32,13 @@ public class ElData {
     private Double price;
 
     /**
+     * Default konstruktor da Hibernate bude sretan
+     */
+    private ElData(){
+
+    }
+
+    /**
      * Konstruktor
      **/
     public ElData(Timestamp time, Double volume, Double price) {
