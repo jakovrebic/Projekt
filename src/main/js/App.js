@@ -1,26 +1,30 @@
+'use strict';
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import {ListData as ListElData} from "./component/eldata/ListElData.jsx";
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import ElDataPage from './page/ElDataPage.js'
+import HomePage from './page/HomePage.js'
 
-function App() {
-  return (
-      <div className="container">
-          <Router>
-              <div className="col-md-6">
-                  <h1 className="text-center" style={style}>Projekt</h1>
-                  <Switch>
-                      <Route path="/" exact component={ListElData} />
-                      <Route path="/users" component={ListElData} />
-                  </Switch>
+export default class App  extends React.Component {
+    render() {
+        return (
+          <HashRouter>
+            <div>
+              <h1>Linkovi</h1>
+              <ul className="header">
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/eldata">El data</NavLink></li>
+              </ul>
+              <div className="content">
+                <Route path="/eldata" component={ElDataPage}/>
               </div>
-          </Router>
-      </div>
-  );
+            </div>
+          </HashRouter>
+        );
+      }
 }
 
-const style = {
-    color: 'red',
-    margin: '10px'
-}
 
-export default App;

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Version;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -24,7 +25,7 @@ public class ElData {
     /**
      * Trenutak u kojem su se dobili podaci
      **/
-    private Timestamp time;
+    private Date time;
     /**
      * Volumen el energije
      **/
@@ -51,7 +52,7 @@ public class ElData {
     /**
      * Konstruktor
      **/
-    public ElData(Timestamp time, Double volume, Double price) {
+    public ElData(Date time, Double volume, Double price) {
         this.time = time;
         this.volume = volume;
         this.price = price;
@@ -90,14 +91,14 @@ public class ElData {
     /**
      * Getter
      */
-    public Timestamp getTime() {
+    public Date getTime() {
         return time;
     }
 
     /**
      * Setter
      */
-    public void setTime(Timestamp time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -143,4 +144,14 @@ public class ElData {
         this.version = version;
     }
 
+    @Override
+    public String toString() {
+        return "ElData{" +
+                "id=" + id +
+                ", time=" + time +
+                ", volume=" + volume +
+                ", price=" + price +
+                ", version=" + version +
+                '}';
+    }
 }
