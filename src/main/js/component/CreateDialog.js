@@ -50,7 +50,7 @@ export default class CreateDialog extends React.Component {
 		return (
 			<div>
 				<a href="#createDialog">Create</a>
-				<div id="createDial" className="modalDialog">
+				<div id="createDialog" className="modalDialog">
 					<div>
 						<a href="#" title="Close" className="close">X</a>
 

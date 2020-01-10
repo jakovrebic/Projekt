@@ -20,6 +20,15 @@ export default class ElDataList extends React.Component{
 		} else {
 			ReactDOM.findDOMNode(this.refs.pageSize).value = pageSize.substring(0, pageSize.length - 1);
 		}
+		if(this.refs.priceFrom == null || this.refs.priceTo == null){
+		    console.error("from ili to je null: " + this.refs.priceFrom  + " - " + this.refs.priceTo)
+		    return;
+		}
+		const fromPrice = this.refs.priceFrom.value;
+		const toPrice = this.refs.priceFrom.value;
+		if (/^[0-9]+$/.test(fromPrice) && /^[0-9]+$/.test(toPrice)  && /^[0-9]+$/.test(pageSize)) {
+		    this.props.updatePriceRange(pageSize,fromPrice,toPrice)
+		}
 	}
 
 	handleNavFirst(e){
@@ -65,6 +74,9 @@ export default class ElDataList extends React.Component{
 		<div>
 		    <h1>Electric data</h1>
             Page size <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}></input>
+            <br/>
+            Price from <input ref="priceFrom" defaultValue={this.props.priceFrom} onInput={this.handleInput}></input>
+            Price to <input ref="priceTo" defaultValue={this.props.priceTo} onInput={this.handleInput}></input>
 			<table>
 				<tbody>
 					<tr>

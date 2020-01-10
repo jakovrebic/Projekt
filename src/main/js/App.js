@@ -1,9 +1,10 @@
 'use strict';
 import React from 'react';
 import {
+ BrowserRouter as Router,
+  Switch,
   Route,
-  NavLink,
-  HashRouter
+  Link
 } from "react-router-dom";
 import ElDataPage from './page/ElDataPage.js'
 import HomePage from './page/HomePage.js'
@@ -11,18 +12,24 @@ import HomePage from './page/HomePage.js'
 export default class App  extends React.Component {
     render() {
         return (
-          <HashRouter>
+          <Router>
             <div>
-              <h1>Linkovi</h1>
-              <ul className="header">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/eldata">El data</NavLink></li>
-              </ul>
-              <div className="content">
-                <Route path="/eldata" component={ElDataPage}/>
-              </div>
+              <nav>
+                  <ul className="header">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/eldata">El data</Link></li>
+                  </ul>
+              </nav>
+              <Switch>
+                <Route path="/eldata">
+                  <ElDataPage />
+                </Route>
+                <Route path="/">
+                  <HomePage />
+                </Route>
+              </Switch>
             </div>
-          </HashRouter>
+          </Router>
         );
       }
 }

@@ -22,41 +22,73 @@ export default class ElDataPage extends React.Component {
         this.onCreate = this.onCreate.bind(this);
         this.onDelete = this.onDelete.bind(this);
         this.onNavigate = this.onNavigate.bind(this);
-       this.refreshCurrentPage = this.refreshCurrentPage.bind(this);
-       this.refreshAndGoToLastPage = this.refreshAndGoToLastPage.bind(this);
+        this.refreshCurrentPage = this.refreshCurrentPage.bind(this);
+        this.refreshAndGoToLastPage = this.refreshAndGoToLastPage.bind(this);
 	}
 
 	loadFromServer(pageSize) {
-    		follow(client, root, [
-    			{rel: 'elDatas', params: {size: pageSize}}]
-    		).then(elDatasCollection => {
-    			return client({
-    				method: 'GET',
-    				path: elDatasCollection.entity._links.profile.href,
-    				headers: {'Accept': 'application/schema+json'}
-    			}).then(schema => {
-    				this.schema = schema.entity;
-    				this.links = elDatasCollection.entity._links;
-    				return elDatasCollection;
-    			});
-    		}).then(elDatasCollection => {
-    			return elDatasCollection.entity._embedded.elDatas.map(elData =>
-    					client({
-    						method: 'GET',
-    						path: elData._links.self.href
-    					})
-    			);
-    		}).then(elDataPromises => {
-    			return when.all(elDataPromises);
-    		}).done(elDatas => {
-    			this.setState({
-    				elDatas: elDatas,
-    				attributes: Object.keys(this.schema.properties),
-    				pageSize: pageSize,
-    				links: this.links
-    			});
-    		});
-    	}
+        follow(client, root, [
+            {rel: 'elDatas', params: {size: pageSize}}]
+        ).then(elDatasCollection => {
+            return client({
+                method: 'GET',
+                path: elDatasCollection.entity._links.profile.href,
+                headers: {'Accept': 'application/schema+json'}
+            }).then(schema => {
+                this.schema = schema.entity;
+                this.links = elDatasCollection.entity._links;
+                return elDatasCollection;
+            });
+        }).then(elDatasCollection => {
+            return elDatasCollection.entity._embedded.elDatas.map(elData =>
+                    client({
+                        method: 'GET',
+                        path: elData._links.self.href
+                    })
+            );
+        }).then(elDataPromises => {
+            return when.all(elDataPromises);
+        }).done(elDatas => {
+            this.setState({
+                elDatas: elDatas,
+                attributes: Object.keys(this.schema.properties),
+                pageSize: pageSize,
+                links: this.links
+            });
+        });
+    }
+
+    loadFromServerByPrice(pageSize,fromPrice, toPrice) {
+            follow(client, root, [
+                {rel: 'elDatas/search/findByPriceBetween', params: {size: pageSize, from:fromPrice, to:toPrice}}]
+            ).then(elDatasCollection => {
+                return client({
+                    method: 'GET',
+                    path: elDatasCollection.entity._links.profile.href,
+                    headers: {'Accept': 'application/schema+json'}
+                }).then(schema => {
+                    this.schema = schema.entity;
+                    this.links = elDatasCollection.entity._links;
+                    return elDatasCollection;
+                });
+            }).then(elDatasCollection => {
+                return elDatasCollection.entity._embedded.elDatas.map(elData =>
+                        client({
+                            method: 'GET',
+                            path: elData._links.self.href
+                        })
+                );
+            }).then(elDataPromises => {
+                return when.all(elDataPromises);
+            }).done(elDatas => {
+                this.setState({
+                    elDatas: elDatas,
+                    attributes: Object.keys(this.schema.properties),
+                    pageSize: pageSize,
+                    links: this.links
+                });
+            });
+        }
 
     onCreate(newElData) {
 		const self = this;
@@ -113,6 +145,12 @@ export default class ElDataPage extends React.Component {
 		if (pageSize !== this.state.pageSize) {
 			this.loadFromServer(pageSize);
 		}
+	}
+
+	updatePriceRange(pageSize, fromPrice, toPrice){
+	    if(fromPrice !== this.state.fromPrice || toPrice !== this.state.toPrice || pageSize !== this.state.pageSize){
+	        this.loadFromServerByPrice(pageSize,fromPrice, toPrice)
+	    }
 	}
 
 	refreshAndGoToLastPage(message) {
@@ -178,7 +216,8 @@ export default class ElDataPage extends React.Component {
 							  onNavigate={this.onNavigate}
 							  onUpdate={this.onUpdate}
 							  onDelete={this.onDelete}
-							  updatePageSize={this.updatePageSize}/>
+							  updatePageSize={this.updatePageSize}
+							  updatePriceRange={this.updatePriceRange}/>
 			</div>
 		)
 	}
