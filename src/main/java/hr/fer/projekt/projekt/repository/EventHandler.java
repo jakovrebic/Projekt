@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleAfterDelete;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
-import org.springframework.hateoas.server.EntityLinks;
+import org.springframework.hateoas.EntityLinks;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +39,7 @@ public class EventHandler {
 
 
 	private String getPath(ElData elData) {
-		return this.entityLinks.linkForItemResource(elData.getClass(),
+		return this.entityLinks.linkForSingleResource(elData.getClass(),
 				elData.getId()).toUri().getPath();
 	}
 

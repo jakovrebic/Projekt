@@ -2,8 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 const defaultPath = 'elDatas'
-const filterByPricePath = 'elDatas/search/findByPriceBetween'
-const filterByVolumePath = 'elDatas/search/findByVolumeBetween'
+const filteredSearch = 'elDatas/search/filtered-search'
 
 export default class ElDataList extends React.Component{
 
@@ -45,7 +44,7 @@ export default class ElDataList extends React.Component{
          params['priceFrom'] = priceFrom*1 //convert to num
          params['priceTo'] = priceTo*1
          console.log(params)
-         this.props.updateParamsAndPath(params, filterByPricePath);
+         this.props.updateParamsAndPath(params, filteredSearch);
     }
 
     handleFilterByVolume(e) {
@@ -63,7 +62,7 @@ export default class ElDataList extends React.Component{
          params['volumeFrom'] = volumeFrom*1 //convert to num
          params['volumeTo'] = volumeTo*1
          console.log(params)
-         this.props.updateParamsAndPath(params, filterByVolumePath);
+         this.props.updateParamsAndPath(params, filteredSearch);
     }
 
     handlePageSizeInput(e) {

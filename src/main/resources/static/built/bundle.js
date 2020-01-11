@@ -49025,8 +49025,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var defaultPath = 'elDatas';
-var filterByPricePath = 'elDatas/search/findByPriceBetween';
-var filterByVolumePath = 'elDatas/search/findByVolumeBetween';
+var filteredSearch = 'elDatas/search/filtered-search';
 
 var ElDataList =
 /*#__PURE__*/
@@ -49087,7 +49086,7 @@ function (_React$Component) {
 
       params['priceTo'] = priceTo * 1;
       console.log(params);
-      this.props.updateParamsAndPath(params, filterByPricePath);
+      this.props.updateParamsAndPath(params, filteredSearch);
     }
   }, {
     key: "handleFilterByVolume",
@@ -49110,7 +49109,7 @@ function (_React$Component) {
 
       params['volumeTo'] = volumeTo * 1;
       console.log(params);
-      this.props.updateParamsAndPath(params, filterByVolumePath);
+      this.props.updateParamsAndPath(params, filteredSearch);
     }
   }, {
     key: "handlePageSizeInput",
@@ -49465,15 +49464,9 @@ function (_React$Component) {
         rel: path,
         params: params
       }]).then(function (elDatasCollection) {
-        var profilePath = 'http://localhost:8090/api/profile/elDatas'; //custom repository methods do no generate this (alps stuff -> prob solution: https://stackoverflow.com/questions/33397920/spring-data-rest-custom-json-schema-alps)
-
-        if (elDatasCollection.entity._links.profile != null && elDatasCollection.entity._links.profile != undefined) {
-          var _profilePath = elDatasCollection.entity._links.profile.href;
-        }
-
         return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
           method: 'GET',
-          path: profilePath,
+          path: elDatasCollection.entity._links.profile.href,
           headers: {
             'Accept': 'application/schema+json'
           }
@@ -49504,54 +49497,59 @@ function (_React$Component) {
   }, {
     key: "onCreate",
     value: function onCreate(newElData) {
-      var _this3 = this;
-
-      var self = this;
-      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [elDataPath]).then(function (response) {
-        return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
+      /*
+      const self = this;
+      follow(client, root, [elDataPath]).then(response => {
+      return client({
+      method: 'POST',
+      path: response.entity._links.self.href,
+      entity: newElData,
+      headers: {'Content-Type': 'application/json'}
+      })
+      }).then(response => {
+      return follow(client, root, [{rel: self.state.path, params: self.state.params}]);
+      }).done(response => {
+      if (typeof response.entity._links.last !== "undefined") {
+      this.onNavigate(response.entity._links.last.href);
+      } else {
+      this.onNavigate(response.entity._links.self.href);
+      }
+      }); */
+      //let websocket handles the update
+      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [this.elDataPath]).done(function (response) {
+        _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
           method: 'POST',
           path: response.entity._links.self.href,
-          entity: newElData,
+          entity: newEmployee,
           headers: {
             'Content-Type': 'application/json'
           }
         });
-      }).then(function (response) {
-        return _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-          rel: self.state.path,
-          params: self.state.params
-        }]);
-      }).done(function (response) {
-        if (typeof response.entity._links.last !== "undefined") {
-          _this3.onNavigate(response.entity._links.last.href);
-        } else {
-          _this3.onNavigate(response.entity._links.self.href);
-        }
       });
     }
   }, {
     key: "onDelete",
     value: function onDelete(elData) {
-      var _this4 = this;
+      var _this3 = this;
 
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'DELETE',
         path: elData.entity._links.self.href
       }).done(function (response) {
-        _this4.loadFromServer(_this4.state.params, _this4.state.path);
+        _this3.loadFromServer(_this3.state.params, _this3.state.path);
       });
     }
   }, {
     key: "onNavigate",
     value: function onNavigate(navUri) {
-      var _this5 = this;
+      var _this4 = this;
 
       console.log('Nav uri is: ' + navUri);
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'GET',
         path: navUri
       }).then(function (elDataCollection) {
-        _this5.links = elDataCollection.entity._links;
+        _this4.links = elDataCollection.entity._links;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49561,12 +49559,12 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).done(function (elDatas) {
-        _this5.setState({
+        _this4.setState({
           elDatas: elDatas,
-          attributes: Object.keys(_this5.schema.properties),
-          params: _this5.state.params,
-          path: _this5.state.path,
-          links: _this5.links
+          attributes: Object.keys(_this4.schema.properties),
+          params: _this4.state.params,
+          path: _this4.state.path,
+          links: _this4.links
         });
       });
     }
@@ -49585,30 +49583,30 @@ function (_React$Component) {
   }, {
     key: "refreshAndGoToLastPage",
     value: function refreshAndGoToLastPage(message) {
-      var _this6 = this;
+      var _this5 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
         rel: this.state.path,
         params: this.state.params
       }]).done(function (response) {
         if (response.entity._links.last !== undefined) {
-          _this6.onNavigate(response.entity._links.last.href);
+          _this5.onNavigate(response.entity._links.last.href);
         } else {
-          _this6.onNavigate(response.entity._links.self.href);
+          _this5.onNavigate(response.entity._links.self.href);
         }
       });
     }
   }, {
     key: "refreshCurrentPage",
     value: function refreshCurrentPage(message) {
-      var _this7 = this;
+      var _this6 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
         rel: this.state.path,
         params: this.state.params
       }]).then(function (elDataCollection) {
-        _this7.links = elDataCollection.entity._links;
-        _this7.page = elDataCollection.entity.page;
+        _this6.links = elDataCollection.entity._links;
+        _this6.page = elDataCollection.entity.page;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49618,13 +49616,13 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).then(function (elDatas) {
-        _this7.setState({
-          page: _this7.page,
+        _this6.setState({
+          page: _this6.page,
           elDatas: elDatas,
-          params: _this7.state.params,
-          path: _this7.state.path,
-          attributes: Object.keys(_this7.schema.properties),
-          links: _this7.links
+          params: _this6.state.params,
+          path: _this6.state.path,
+          attributes: Object.keys(_this6.schema.properties),
+          links: _this6.links
         });
       });
     }

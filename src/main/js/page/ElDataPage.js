@@ -28,22 +28,15 @@ export default class ElDataPage extends React.Component {
         follow(client, root, [
             {rel: path, params: params}]
         ).then(elDatasCollection => {
-
-             let profilePath = 'http://localhost:8090/api/profile/elDatas'
-            //custom repository methods do no generate this (alps stuff -> prob solution: https://stackoverflow.com/questions/33397920/spring-data-rest-custom-json-schema-alps)
-            if( elDatasCollection.entity._links.profile != null &&  elDatasCollection.entity._links.profile != undefined){
-                let profilePath = elDatasCollection.entity._links.profile.href
-            }
             return client({
                 method: 'GET',
-                path: profilePath,
+                path: elDatasCollection.entity._links.profile.href,
                 headers: {'Accept': 'application/schema+json'}
             }).then(schema => {
                 this.schema = schema.entity;
                 this.links = elDatasCollection.entity._links;
                 return elDatasCollection;
             });
-
         }).then(elDatasCollection => {
             return elDatasCollection.entity._embedded.elDatas.map(elData =>
                     client({
@@ -66,6 +59,7 @@ export default class ElDataPage extends React.Component {
     }
 
     onCreate(newElData) {
+    /*
 		const self = this;
 		follow(client, root, [elDataPath]).then(response => {
 			return client({
@@ -82,7 +76,16 @@ export default class ElDataPage extends React.Component {
 			} else {
 				this.onNavigate(response.entity._links.self.href);
 			}
-		});
+		}); */
+		//let websocket handles the update
+		follow(client, root, [this.elDataPath]).done(response => {
+        		client({
+        			method: 'POST',
+        			path: response.entity._links.self.href,
+        			entity: newEmployee,
+        			headers: {'Content-Type': 'application/json'}
+        		})
+        	})
 	}
 
 	onDelete(elData) {
