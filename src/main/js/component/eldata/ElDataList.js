@@ -1,33 +1,83 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
+const defaultPath = 'elDatas'
+const filterByPricePath = 'elDatas/search/findByPriceBetween'
+const filterByVolumePath = 'elDatas/search/findByVolumeBetween'
+
 export default class ElDataList extends React.Component{
 
 	constructor(props) {
 		super(props);
+		console.log(props)
 		this.handleNavFirst = this.handleNavFirst.bind(this);
 		this.handleNavPrev = this.handleNavPrev.bind(this);
 		this.handleNavNext = this.handleNavNext.bind(this);
 		this.handleNavLast = this.handleNavLast.bind(this);
-		this.handleInput = this.handleInput.bind(this);
+		this.handlePageSizeInput = this.handlePageSizeInput.bind(this);
+		this.handleClearFilter = this.handleClearFilter.bind(this)
+		this.handleFilterByPrice = this.handleFilterByPrice.bind(this)
+		this.handleFilterByVolume = this.handleFilterByVolume.bind(this)
 	}
 
-    handleInput(e) {
+    handleClearFilter(e){
+        e.preventDefault();
+        let params = []
+        const pageSize = this.refs.pageSize.value;
+        if (/^[0-9]+$/.test(pageSize)) {
+            params = { size: pageSize}
+        }
+         this.props.updateParamsAndPath(params, defaultPath);
+    }
+
+    handleFilterByPrice(e) {
+         e.preventDefault();
+         let priceFrom = this.refs.priceFrom.value;
+         let priceTo = this.refs.priceTo.value;
+         if(priceFrom == null || priceFrom == undefined || priceFrom==""){
+            priceFrom = 0
+         }
+         if(priceTo == null || priceTo == undefined || priceTo==""){
+            priceTo = 9999//we can use Number.MAX_VALUE but that is overkill
+         }
+         let params = this.props.params;
+         console.log(params)
+         params['priceFrom'] = priceFrom*1 //convert to num
+         params['priceTo'] = priceTo*1
+         console.log(params)
+         this.props.updateParamsAndPath(params, filterByPricePath);
+    }
+
+    handleFilterByVolume(e) {
+         e.preventDefault();
+         let volumeFrom = this.refs.volumeFrom.value;
+         let volumeTo = this.refs.volumeTo.value;
+         if(volumeFrom == null || volumeFrom == undefined || volumeFrom==""){
+            volumeFrom = 0
+         }
+         if(volumeTo == null || volumeTo == undefined || volumeTo==""){
+            volumeTo = 999999999999999999999//we can use Number.MAX_VALUE but that is overkill
+         }
+         let params = this.props.params;
+         console.log(params)
+         params['volumeFrom'] = volumeFrom*1 //convert to num
+         params['volumeTo'] = volumeTo*1
+         console.log(params)
+         this.props.updateParamsAndPath(params, filterByVolumePath);
+    }
+
+    handlePageSizeInput(e) {
 		e.preventDefault();
-		const pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
+		const pageSize = this.refs.pageSize.value;
 		if (/^[0-9]+$/.test(pageSize)) {
-			this.props.updatePageSize(pageSize);
+		    console.log(this.props);
+			let params = this.props.params;
+			console.log(params)
+			params['size'] = pageSize*1;
+			console.log(params)
+			this.props.updateParamsAndPath(params, this.props.path);
 		} else {
-			ReactDOM.findDOMNode(this.refs.pageSize).value = pageSize.substring(0, pageSize.length - 1);
-		}
-		if(this.refs.priceFrom == null || this.refs.priceTo == null){
-		    console.error("from ili to je null: " + this.refs.priceFrom  + " - " + this.refs.priceTo)
-		    return;
-		}
-		const fromPrice = this.refs.priceFrom.value;
-		const toPrice = this.refs.priceFrom.value;
-		if (/^[0-9]+$/.test(fromPrice) && /^[0-9]+$/.test(toPrice)  && /^[0-9]+$/.test(pageSize)) {
-		    this.props.updatePriceRange(pageSize,fromPrice,toPrice)
+			this.refs.pageSize.value = pageSize.substring(0, pageSize.length - 1);
 		}
 	}
 
@@ -70,13 +120,27 @@ export default class ElDataList extends React.Component{
             navLinks.push(<button key="last" onClick={this.handleNavLast}>&gt;&gt;</button>);
         }
 
+            //Price from <input ref="priceFrom" defaultValue={this.props.priceFrom} onInput={this.handleInput}></input>
+            //Price to <input ref="priceTo" defaultValue={this.props.priceTo} onInput={this.handleInput}></input>
+
 		return (
 		<div>
 		    <h1>Electric data</h1>
-            Page size <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}></input>
+            Page size <input   type="number" ref="pageSize" defaultValue={this.props.params['size']} onInput={this.handlePageSizeInput} min="1" step="1"></input>
             <br/>
-            Price from <input ref="priceFrom" defaultValue={this.props.priceFrom} onInput={this.handleInput}></input>
-            Price to <input ref="priceTo" defaultValue={this.props.priceTo} onInput={this.handleInput}></input>
+            <div>
+                Filter by price
+                <input type="number" ref="priceFrom" defaultValue={this.props.params['priceFrom']} min="0" step="0.01"></input>
+                <input type="number" ref="priceTo" defaultValue={this.props.params['priceTo']}  min="0.01" step="0.01"></input>
+                <button onClick={this.handleFilterByPrice}>FilterByPrice</button>
+            </div>
+            <div>
+                Filter by volume
+                <input type="number" ref="volumeFrom" defaultValue={this.props.params['volumeFrom']} min="0" step="0.01"></input>
+                <input type="number" ref="volumeTo" defaultValue={this.props.params['volumeTo']}  min="0.01" step="0.01"></input>
+                <button onClick={this.handleFilterByVolume}>FilterByVolume</button>
+            </div>
+             <button onClick={this.handleClearFilter}>Clear filters</button>
 			<table>
 				<tbody>
 					<tr>

@@ -11,25 +11,42 @@ module.exports = function follow(api, rootPath, relArray) {
 
 	function traverseNext (root, rel, arrayItem) {
 		return root.then(function (response) {
+		    console.log(rel)
+		    console.log(arrayItem)
 			if (hasEmbeddedRel(response.entity, rel)) {
 				return response.entity._embedded[rel];
 			}
-
+            console.log(response.entity)
 			if(!response.entity._links) {
 				return [];
 			}
 
 			if (typeof arrayItem === 'string') {
-				return api({
-					method: 'GET',
-					path: response.entity._links[rel].href
-				});
+			    if(response.entity._links[rel] != null && response.entity._links[rel] != undefined){
+                    return api({
+                        method: 'GET',
+                        path: response.entity._links[rel].href
+                    });
+                }else{ //for making some custom calls that is not in current link page
+                    return api({
+                        method: 'GET',
+                        path: rootPath+'/'+rel,
+                    });
+                }
 			} else {
-				return api({
-					method: 'GET',
-					path: response.entity._links[rel].href,
-					params: arrayItem.params
-				});
+                if(response.entity._links[rel] != null && response.entity._links[rel] != undefined){
+                    return api({
+                        method: 'GET',
+                        path: response.entity._links[rel].href,
+                        params: arrayItem.params
+                    });
+				}else{ //for making some custom calls that is not in current link page
+                    return api({
+                        method: 'GET',
+                        path: rootPath+'/'+rel,
+                        params: arrayItem.params
+                    });
+                }
 			}
 		});
 	}

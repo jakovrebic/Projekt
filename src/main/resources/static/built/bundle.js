@@ -46152,7 +46152,7 @@ module.exports = __webpack_require__(/*! ../package.json */ "./node_modules/webs
 /*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _optional, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, browser, bugs, config, contributors, dependencies, description, devDependencies, directories, engines, homepage, keywords, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_args\":[[\"websocket@1.0.31\",\"D:\\\\Projekt\"]],\"_from\":\"websocket@1.0.31\",\"_id\":\"websocket@1.0.31\",\"_inBundle\":false,\"_integrity\":\"sha512-VAouplvGKPiKFDTeCCO65vYHsyay8DqoBSlzIO3fayrfOgU94lQN5a1uWVnFrMLceTJw/+fQXR5PGbUVRaHshQ==\",\"_location\":\"/websocket\",\"_optional\":true,\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"websocket@1.0.31\",\"name\":\"websocket\",\"escapedName\":\"websocket\",\"rawSpec\":\"1.0.31\",\"saveSpec\":null,\"fetchSpec\":\"1.0.31\"},\"_requiredBy\":[\"/stompjs\"],\"_resolved\":\"https://registry.npmjs.org/websocket/-/websocket-1.0.31.tgz\",\"_spec\":\"1.0.31\",\"_where\":\"D:\\\\Projekt\",\"author\":{\"name\":\"Brian McKelvey\",\"email\":\"theturtle32@gmail.com\",\"url\":\"https://github.com/theturtle32\"},\"browser\":\"lib/browser.js\",\"bugs\":{\"url\":\"https://github.com/theturtle32/WebSocket-Node/issues\"},\"config\":{\"verbose\":false},\"contributors\":[{\"name\":\"Iñaki Baz Castillo\",\"email\":\"ibc@aliax.net\",\"url\":\"http://dev.sipdoc.net\"}],\"dependencies\":{\"debug\":\"^2.2.0\",\"es5-ext\":\"^0.10.50\",\"nan\":\"^2.14.0\",\"typedarray-to-buffer\":\"^3.1.5\",\"yaeti\":\"^0.0.6\"},\"description\":\"Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.\",\"devDependencies\":{\"buffer-equal\":\"^1.0.0\",\"faucet\":\"^0.0.1\",\"gulp\":\"^4.0.2\",\"gulp-jshint\":\"^2.0.4\",\"jshint\":\"^2.0.0\",\"jshint-stylish\":\"^2.2.1\",\"tape\":\"^4.9.1\"},\"directories\":{\"lib\":\"./lib\"},\"engines\":{\"node\":\">=0.10.0\"},\"homepage\":\"https://github.com/theturtle32/WebSocket-Node\",\"keywords\":[\"websocket\",\"websockets\",\"socket\",\"networking\",\"comet\",\"push\",\"RFC-6455\",\"realtime\",\"server\",\"client\"],\"license\":\"Apache-2.0\",\"main\":\"index\",\"name\":\"websocket\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/theturtle32/WebSocket-Node.git\"},\"scripts\":{\"gulp\":\"gulp\",\"install\":\"(node-gyp rebuild 2> builderror.log) || (exit 0)\",\"test\":\"faucet test/unit\"},\"version\":\"1.0.31\"}");
+module.exports = JSON.parse("{\"_args\":[[\"websocket@1.0.31\",\"C:\\\\Users\\\\ShockFront\\\\Downloads\\\\projekt\"]],\"_from\":\"websocket@1.0.31\",\"_id\":\"websocket@1.0.31\",\"_inBundle\":false,\"_integrity\":\"sha512-VAouplvGKPiKFDTeCCO65vYHsyay8DqoBSlzIO3fayrfOgU94lQN5a1uWVnFrMLceTJw/+fQXR5PGbUVRaHshQ==\",\"_location\":\"/websocket\",\"_optional\":true,\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"websocket@1.0.31\",\"name\":\"websocket\",\"escapedName\":\"websocket\",\"rawSpec\":\"1.0.31\",\"saveSpec\":null,\"fetchSpec\":\"1.0.31\"},\"_requiredBy\":[\"/stompjs\"],\"_resolved\":\"https://registry.npmjs.org/websocket/-/websocket-1.0.31.tgz\",\"_spec\":\"1.0.31\",\"_where\":\"C:\\\\Users\\\\ShockFront\\\\Downloads\\\\projekt\",\"author\":{\"name\":\"Brian McKelvey\",\"email\":\"theturtle32@gmail.com\",\"url\":\"https://github.com/theturtle32\"},\"browser\":\"lib/browser.js\",\"bugs\":{\"url\":\"https://github.com/theturtle32/WebSocket-Node/issues\"},\"config\":{\"verbose\":false},\"contributors\":[{\"name\":\"Iñaki Baz Castillo\",\"email\":\"ibc@aliax.net\",\"url\":\"http://dev.sipdoc.net\"}],\"dependencies\":{\"debug\":\"^2.2.0\",\"es5-ext\":\"^0.10.50\",\"nan\":\"^2.14.0\",\"typedarray-to-buffer\":\"^3.1.5\",\"yaeti\":\"^0.0.6\"},\"description\":\"Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.\",\"devDependencies\":{\"buffer-equal\":\"^1.0.0\",\"faucet\":\"^0.0.1\",\"gulp\":\"^4.0.2\",\"gulp-jshint\":\"^2.0.4\",\"jshint\":\"^2.0.0\",\"jshint-stylish\":\"^2.2.1\",\"tape\":\"^4.9.1\"},\"directories\":{\"lib\":\"./lib\"},\"engines\":{\"node\":\">=0.10.0\"},\"homepage\":\"https://github.com/theturtle32/WebSocket-Node\",\"keywords\":[\"websocket\",\"websockets\",\"socket\",\"networking\",\"comet\",\"push\",\"RFC-6455\",\"realtime\",\"server\",\"client\"],\"license\":\"Apache-2.0\",\"main\":\"index\",\"name\":\"websocket\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/theturtle32/WebSocket-Node.git\"},\"scripts\":{\"gulp\":\"gulp\",\"install\":\"(node-gyp rebuild 2> builderror.log) || (exit 0)\",\"test\":\"faucet test/unit\"},\"version\":\"1.0.31\"}");
 
 /***/ }),
 
@@ -48711,8 +48711,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _page_ElDataPage_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page/ElDataPage.js */ "./src/main/js/page/ElDataPage.js");
 /* harmony import */ var _page_HomePage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./page/HomePage.js */ "./src/main/js/page/HomePage.js");
-
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48843,9 +48841,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 var rest = __webpack_require__(/*! rest */ "./node_modules/rest/browser.js");
 
@@ -49029,6 +49024,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var defaultPath = 'elDatas';
+var filterByPricePath = 'elDatas/search/findByPriceBetween';
+var filterByVolumePath = 'elDatas/search/findByVolumeBetween';
 
 var ElDataList =
 /*#__PURE__*/
@@ -49041,36 +49039,94 @@ function (_React$Component) {
     _classCallCheck(this, ElDataList);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ElDataList).call(this, props));
+    console.log(props);
     _this.handleNavFirst = _this.handleNavFirst.bind(_assertThisInitialized(_this));
     _this.handleNavPrev = _this.handleNavPrev.bind(_assertThisInitialized(_this));
     _this.handleNavNext = _this.handleNavNext.bind(_assertThisInitialized(_this));
     _this.handleNavLast = _this.handleNavLast.bind(_assertThisInitialized(_this));
-    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handlePageSizeInput = _this.handlePageSizeInput.bind(_assertThisInitialized(_this));
+    _this.handleClearFilter = _this.handleClearFilter.bind(_assertThisInitialized(_this));
+    _this.handleFilterByPrice = _this.handleFilterByPrice.bind(_assertThisInitialized(_this));
+    _this.handleFilterByVolume = _this.handleFilterByVolume.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ElDataList, [{
-    key: "handleInput",
-    value: function handleInput(e) {
+    key: "handleClearFilter",
+    value: function handleClearFilter(e) {
       e.preventDefault();
-      var pageSize = react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.findDOMNode(this.refs.pageSize).value;
+      var params = [];
+      var pageSize = this.refs.pageSize.value;
 
       if (/^[0-9]+$/.test(pageSize)) {
-        this.props.updatePageSize(pageSize);
+        params = {
+          size: pageSize
+        };
+      }
+
+      this.props.updateParamsAndPath(params, defaultPath);
+    }
+  }, {
+    key: "handleFilterByPrice",
+    value: function handleFilterByPrice(e) {
+      e.preventDefault();
+      var priceFrom = this.refs.priceFrom.value;
+      var priceTo = this.refs.priceTo.value;
+
+      if (priceFrom == null || priceFrom == undefined || priceFrom == "") {
+        priceFrom = 0;
+      }
+
+      if (priceTo == null || priceTo == undefined || priceTo == "") {
+        priceTo = 9999; //we can use Number.MAX_VALUE but that is overkill
+      }
+
+      var params = this.props.params;
+      console.log(params);
+      params['priceFrom'] = priceFrom * 1; //convert to num
+
+      params['priceTo'] = priceTo * 1;
+      console.log(params);
+      this.props.updateParamsAndPath(params, filterByPricePath);
+    }
+  }, {
+    key: "handleFilterByVolume",
+    value: function handleFilterByVolume(e) {
+      e.preventDefault();
+      var volumeFrom = this.refs.volumeFrom.value;
+      var volumeTo = this.refs.volumeTo.value;
+
+      if (volumeFrom == null || volumeFrom == undefined || volumeFrom == "") {
+        volumeFrom = 0;
+      }
+
+      if (volumeTo == null || volumeTo == undefined || volumeTo == "") {
+        volumeTo = 999999999999999999999; //we can use Number.MAX_VALUE but that is overkill
+      }
+
+      var params = this.props.params;
+      console.log(params);
+      params['volumeFrom'] = volumeFrom * 1; //convert to num
+
+      params['volumeTo'] = volumeTo * 1;
+      console.log(params);
+      this.props.updateParamsAndPath(params, filterByVolumePath);
+    }
+  }, {
+    key: "handlePageSizeInput",
+    value: function handlePageSizeInput(e) {
+      e.preventDefault();
+      var pageSize = this.refs.pageSize.value;
+
+      if (/^[0-9]+$/.test(pageSize)) {
+        console.log(this.props);
+        var params = this.props.params;
+        console.log(params);
+        params['size'] = pageSize * 1;
+        console.log(params);
+        this.props.updateParamsAndPath(params, this.props.path);
       } else {
-        react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.findDOMNode(this.refs.pageSize).value = pageSize.substring(0, pageSize.length - 1);
-      }
-
-      if (this.refs.priceFrom == null || this.refs.priceTo == null) {
-        console.error("from ili to je null: " + this.refs.priceFrom + " - " + this.refs.priceTo);
-        return;
-      }
-
-      var fromPrice = this.refs.priceFrom.value;
-      var toPrice = this.refs.priceFrom.value;
-
-      if (/^[0-9]+$/.test(fromPrice) && /^[0-9]+$/.test(toPrice) && /^[0-9]+$/.test(pageSize)) {
-        this.props.updatePriceRange(pageSize, fromPrice, toPrice);
+        this.refs.pageSize.value = pageSize.substring(0, pageSize.length - 1);
       }
     }
   }, {
@@ -49138,21 +49194,48 @@ function (_React$Component) {
           key: "last",
           onClick: this.handleNavLast
         }, ">>"));
-      }
+      } //Price from <input ref="priceFrom" defaultValue={this.props.priceFrom} onInput={this.handleInput}></input>
+      //Price to <input ref="priceTo" defaultValue={this.props.priceTo} onInput={this.handleInput}></input>
+
 
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Electric data"), "Page size ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "number",
         ref: "pageSize",
-        defaultValue: this.props.pageSize,
-        onInput: this.handleInput
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), "Price from ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        defaultValue: this.props.params['size'],
+        onInput: this.handlePageSizeInput,
+        min: "1",
+        step: "1"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Filter by price", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "number",
         ref: "priceFrom",
-        defaultValue: this.props.priceFrom,
-        onInput: this.handleInput
-      }), "Price to ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        defaultValue: this.props.params['priceFrom'],
+        min: "0",
+        step: "0.01"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "number",
         ref: "priceTo",
-        defaultValue: this.props.priceTo,
-        onInput: this.handleInput
-      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Volume"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Date"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null)), elDatas)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, navLinks));
+        defaultValue: this.props.params['priceTo'],
+        min: "0.01",
+        step: "0.01"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: this.handleFilterByPrice
+      }, "FilterByPrice")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Filter by volume", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "number",
+        ref: "volumeFrom",
+        defaultValue: this.props.params['volumeFrom'],
+        min: "0",
+        step: "0.01"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "number",
+        ref: "volumeTo",
+        defaultValue: this.props.params['volumeTo'],
+        min: "0.01",
+        step: "0.01"
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: this.handleFilterByVolume
+      }, "FilterByVolume")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: this.handleClearFilter
+      }, "Clear filters"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Volume"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Date"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null)), elDatas)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, navLinks));
     }
   }]);
 
@@ -49213,25 +49296,47 @@ module.exports = function follow(api, rootPath, relArray) {
 
   function traverseNext(root, rel, arrayItem) {
     return root.then(function (response) {
+      console.log(rel);
+      console.log(arrayItem);
+
       if (hasEmbeddedRel(response.entity, rel)) {
         return response.entity._embedded[rel];
       }
+
+      console.log(response.entity);
 
       if (!response.entity._links) {
         return [];
       }
 
       if (typeof arrayItem === 'string') {
-        return api({
-          method: 'GET',
-          path: response.entity._links[rel].href
-        });
+        if (response.entity._links[rel] != null && response.entity._links[rel] != undefined) {
+          return api({
+            method: 'GET',
+            path: response.entity._links[rel].href
+          });
+        } else {
+          //for making some custom calls that is not in current link page
+          return api({
+            method: 'GET',
+            path: rootPath + '/' + rel
+          });
+        }
       } else {
-        return api({
-          method: 'GET',
-          path: response.entity._links[rel].href,
-          params: arrayItem.params
-        });
+        if (response.entity._links[rel] != null && response.entity._links[rel] != undefined) {
+          return api({
+            method: 'GET',
+            path: response.entity._links[rel].href,
+            params: arrayItem.params
+          });
+        } else {
+          //for making some custom calls that is not in current link page
+          return api({
+            method: 'GET',
+            path: rootPath + '/' + rel,
+            params: arrayItem.params
+          });
+        }
       }
     });
   }
@@ -49285,8 +49390,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _client_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_client_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _follow_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../follow.js */ "./src/main/js/follow.js");
 /* harmony import */ var _follow_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_follow_js__WEBPACK_IMPORTED_MODULE_5__);
-
-
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util.js */ "./src/main/js/util.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_util_js__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49315,11 +49420,12 @@ var when = __webpack_require__(/*! when */ "./node_modules/when/when.js");
 
  // function to hop multiple links by "rel"
 
-var stompClient = __webpack_require__(/*! ../websocket-listener */ "./src/main/js/websocket-listener.js"); //import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-//import {ListData as ListElData} from "./component/eldata/ListElData.jsx";
 
+
+var stompClient = __webpack_require__(/*! ../websocket-listener */ "./src/main/js/websocket-listener.js");
 
 var root = '/api';
+var elDataPath = "elDatas";
 
 var ElDataPage =
 /*#__PURE__*/
@@ -49335,13 +49441,16 @@ function (_React$Component) {
     _this.state = {
       elDatas: [],
       attributes: [],
-      pageSize: 2,
-      links: {}
+      links: {},
+      params: {
+        size: 2
+      },
+      path: elDataPath
     };
-    _this.updatePageSize = _this.updatePageSize.bind(_assertThisInitialized(_this));
     _this.onCreate = _this.onCreate.bind(_assertThisInitialized(_this));
     _this.onDelete = _this.onDelete.bind(_assertThisInitialized(_this));
     _this.onNavigate = _this.onNavigate.bind(_assertThisInitialized(_this));
+    _this.updateParamsAndPath = _this.updateParamsAndPath.bind(_assertThisInitialized(_this));
     _this.refreshCurrentPage = _this.refreshCurrentPage.bind(_assertThisInitialized(_this));
     _this.refreshAndGoToLastPage = _this.refreshAndGoToLastPage.bind(_assertThisInitialized(_this));
     return _this;
@@ -49349,18 +49458,22 @@ function (_React$Component) {
 
   _createClass(ElDataPage, [{
     key: "loadFromServer",
-    value: function loadFromServer(pageSize) {
+    value: function loadFromServer(params, path) {
       var _this2 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-        rel: 'elDatas',
-        params: {
-          size: pageSize
-        }
+        rel: path,
+        params: params
       }]).then(function (elDatasCollection) {
+        var profilePath = 'http://localhost:8090/api/profile/elDatas'; //custom repository methods do no generate this (alps stuff -> prob solution: https://stackoverflow.com/questions/33397920/spring-data-rest-custom-json-schema-alps)
+
+        if (elDatasCollection.entity._links.profile != null && elDatasCollection.entity._links.profile != undefined) {
+          var _profilePath = elDatasCollection.entity._links.profile.href;
+        }
+
         return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
           method: 'GET',
-          path: elDatasCollection.entity._links.profile.href,
+          path: profilePath,
           headers: {
             'Accept': 'application/schema+json'
           }
@@ -49382,60 +49495,19 @@ function (_React$Component) {
         _this2.setState({
           elDatas: elDatas,
           attributes: Object.keys(_this2.schema.properties),
-          pageSize: pageSize,
+          params: params,
+          path: path,
           links: _this2.links
-        });
-      });
-    }
-  }, {
-    key: "loadFromServerByPrice",
-    value: function loadFromServerByPrice(pageSize, fromPrice, toPrice) {
-      var _this3 = this;
-
-      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-        rel: 'elDatas/search/findByPriceBetween',
-        params: {
-          size: pageSize,
-          from: fromPrice,
-          to: toPrice
-        }
-      }]).then(function (elDatasCollection) {
-        return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
-          method: 'GET',
-          path: elDatasCollection.entity._links.profile.href,
-          headers: {
-            'Accept': 'application/schema+json'
-          }
-        }).then(function (schema) {
-          _this3.schema = schema.entity;
-          _this3.links = elDatasCollection.entity._links;
-          return elDatasCollection;
-        });
-      }).then(function (elDatasCollection) {
-        return elDatasCollection.entity._embedded.elDatas.map(function (elData) {
-          return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
-            method: 'GET',
-            path: elData._links.self.href
-          });
-        });
-      }).then(function (elDataPromises) {
-        return when.all(elDataPromises);
-      }).done(function (elDatas) {
-        _this3.setState({
-          elDatas: elDatas,
-          attributes: Object.keys(_this3.schema.properties),
-          pageSize: pageSize,
-          links: _this3.links
         });
       });
     }
   }, {
     key: "onCreate",
     value: function onCreate(newElData) {
-      var _this4 = this;
+      var _this3 = this;
 
       var self = this;
-      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, ['elDatas']).then(function (response) {
+      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [elDataPath]).then(function (response) {
         return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
           method: 'POST',
           path: response.entity._links.self.href,
@@ -49446,41 +49518,40 @@ function (_React$Component) {
         });
       }).then(function (response) {
         return _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-          rel: 'elDatas',
-          params: {
-            'size': self.state.pageSize
-          }
+          rel: self.state.path,
+          params: self.state.params
         }]);
       }).done(function (response) {
         if (typeof response.entity._links.last !== "undefined") {
-          _this4.onNavigate(response.entity._links.last.href);
+          _this3.onNavigate(response.entity._links.last.href);
         } else {
-          _this4.onNavigate(response.entity._links.self.href);
+          _this3.onNavigate(response.entity._links.self.href);
         }
       });
     }
   }, {
     key: "onDelete",
     value: function onDelete(elData) {
-      var _this5 = this;
+      var _this4 = this;
 
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'DELETE',
         path: elData.entity._links.self.href
       }).done(function (response) {
-        _this5.loadFromServer(_this5.state.pageSize);
+        _this4.loadFromServer(_this4.state.params, _this4.state.path);
       });
     }
   }, {
     key: "onNavigate",
     value: function onNavigate(navUri) {
-      var _this6 = this;
+      var _this5 = this;
 
+      console.log('Nav uri is: ' + navUri);
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'GET',
         path: navUri
       }).then(function (elDataCollection) {
-        _this6.links = elDataCollection.entity._links;
+        _this5.links = elDataCollection.entity._links;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49490,60 +49561,54 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).done(function (elDatas) {
-        _this6.setState({
+        _this5.setState({
           elDatas: elDatas,
-          attributes: Object.keys(_this6.schema.properties),
-          pageSize: _this6.state.pageSize,
-          links: _this6.links
+          attributes: Object.keys(_this5.schema.properties),
+          params: _this5.state.params,
+          path: _this5.state.path,
+          links: _this5.links
         });
       });
     }
   }, {
-    key: "updatePageSize",
-    value: function updatePageSize(pageSize) {
-      if (pageSize !== this.state.pageSize) {
-        this.loadFromServer(pageSize);
-      }
-    }
-  }, {
-    key: "updatePriceRange",
-    value: function updatePriceRange(pageSize, fromPrice, toPrice) {
-      if (fromPrice !== this.state.fromPrice || toPrice !== this.state.toPrice || pageSize !== this.state.pageSize) {
-        this.loadFromServerByPrice(pageSize, fromPrice, toPrice);
-      }
+    key: "updateParamsAndPath",
+    value: function updateParamsAndPath(params, path) {
+      console.log(params);
+      console.log(path);
+      console.log("State is:" + this.state);
+      console.log("size is:" + this.state.params);
+      console.log("params are: " + _util_js__WEBPACK_IMPORTED_MODULE_6___default()(params, this.state.params)); //if (!compareArrays(params, this.state.params) || this.state.path !== path) {
+
+      console.log("loading data from server");
+      this.loadFromServer(params, path); //}
     }
   }, {
     key: "refreshAndGoToLastPage",
     value: function refreshAndGoToLastPage(message) {
-      var _this7 = this;
+      var _this6 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-        rel: 'elDatas',
-        params: {
-          size: this.state.pageSize
-        }
+        rel: this.state.path,
+        params: this.state.params
       }]).done(function (response) {
         if (response.entity._links.last !== undefined) {
-          _this7.onNavigate(response.entity._links.last.href);
+          _this6.onNavigate(response.entity._links.last.href);
         } else {
-          _this7.onNavigate(response.entity._links.self.href);
+          _this6.onNavigate(response.entity._links.self.href);
         }
       });
     }
   }, {
     key: "refreshCurrentPage",
     value: function refreshCurrentPage(message) {
-      var _this8 = this;
+      var _this7 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
-        rel: 'elDatas',
-        params: {
-          size: this.state.pageSize,
-          page: this.state.page.number
-        }
+        rel: this.state.path,
+        params: this.state.params
       }]).then(function (elDataCollection) {
-        _this8.links = elDataCollection.entity._links;
-        _this8.page = elDataCollection.entity.page;
+        _this7.links = elDataCollection.entity._links;
+        _this7.page = elDataCollection.entity.page;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49553,19 +49618,20 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).then(function (elDatas) {
-        _this8.setState({
-          page: _this8.page,
+        _this7.setState({
+          page: _this7.page,
           elDatas: elDatas,
-          attributes: Object.keys(_this8.schema.properties),
-          pageSize: _this8.state.pageSize,
-          links: _this8.links
+          params: _this7.state.params,
+          path: _this7.state.path,
+          attributes: Object.keys(_this7.schema.properties),
+          links: _this7.links
         });
       });
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.loadFromServer(this.state.pageSize);
+      this.loadFromServer(this.state.params, this.state.path);
       stompClient.register([{
         route: '/topic/newElData',
         callback: this.refreshAndGoToLastPage
@@ -49583,13 +49649,12 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_component_eldata_ElDataList_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
         elDatas: this.state.elDatas,
         links: this.state.links,
-        pageSize: this.state.pageSize,
+        params: this.state.params,
+        path: this.state.path,
         attributes: this.state.attributes,
         onNavigate: this.onNavigate,
-        onUpdate: this.onUpdate,
         onDelete: this.onDelete,
-        updatePageSize: this.updatePageSize,
-        updatePriceRange: this.updatePriceRange
+        updateParamsAndPath: this.updateParamsAndPath
       }));
     }
   }]);
@@ -49657,6 +49722,65 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./src/main/js/util.js":
+/*!*****************************!*\
+  !*** ./src/main/js/util.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//returns true if arrays are equal
+module.exports = function compareArrays(value, other) {
+  // Get the value type
+  var type = Object.prototype.toString.call(value); // If the two objects are not the same type, return false
+
+  if (type !== Object.prototype.toString.call(other)) return false; // If items are not an object or array, return false
+
+  if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false; // Compare the length of the length of the two items
+
+  var valueLen = type === '[object Array]' ? value.length : Object.keys(value).length;
+  var otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
+  if (valueLen !== otherLen) return false; // Compare two items
+
+  var compare = function compare(item1, item2) {
+    // Get the object type
+    var itemType = Object.prototype.toString.call(item1); // If an object or array, compare recursively
+
+    if (['[object Array]', '[object Object]'].indexOf(itemType) >= 0) {
+      if (!isEqual(item1, item2)) return false;
+    } // Otherwise, do a simple comparison
+    else {
+        // If the two items are not the same type, return false
+        if (itemType !== Object.prototype.toString.call(item2)) return false; // Else if it's a function, convert to a string and compare
+        // Otherwise, just compare
+
+        if (itemType === '[object Function]') {
+          if (item1.toString() !== item2.toString()) return false;
+        } else {
+          if (item1 !== item2) return false;
+        }
+      }
+  }; // Compare properties
+
+
+  if (type === '[object Array]') {
+    for (var i = 0; i < valueLen; i++) {
+      if (compare(value[i], other[i]) === false) return false;
+    }
+  } else {
+    for (var key in value) {
+      if (value.hasOwnProperty(key)) {
+        if (compare(value[key], other[key]) === false) return false;
+      }
+    }
+  } // If nothing failed, return true
+
+
+  return true;
+};
 
 /***/ }),
 
