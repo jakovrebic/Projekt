@@ -48929,7 +48929,8 @@ function (_React$Component) {
       });
       this.props.onCreate(newElData);
       this.props.attributes.forEach(function (attribute) {
-        react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.findDOMNode(_this2.refs[attribute]).value = ''; // clear out the dialog's inputs
+        //maybe we do not want to clear because then default values are not set
+        react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.findDOMNode(_this2.refs[attribute]).value = react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.findDOMNode(_this2.refs[attribute]).defaultValue; // clear out the dialog's inputs
       });
       window.location = "#";
     }
@@ -49047,6 +49048,7 @@ function (_React$Component) {
     _this.handleClearFilter = _this.handleClearFilter.bind(_assertThisInitialized(_this));
     _this.handleFilterByPrice = _this.handleFilterByPrice.bind(_assertThisInitialized(_this));
     _this.handleFilterByVolume = _this.handleFilterByVolume.bind(_assertThisInitialized(_this));
+    _this.handleFilterByDate = _this.handleFilterByDate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -49064,6 +49066,41 @@ function (_React$Component) {
       }
 
       this.props.updateParamsAndPath(params, defaultPath);
+    }
+  }, {
+    key: "convertDate",
+    value: function convertDate(date) {
+      var utcString = date.toISOString().substring(0, 19);
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      return year + "-" + (month < 10 ? "0" + month.toString() : month) + "-" + (day < 10 ? "0" + day.toString() : day) + "T" + (hour < 10 ? "0" + hour.toString() : hour) + ":" + (minute < 10 ? "0" + minute.toString() : minute) + utcString.substring(16, 19);
+    }
+  }, {
+    key: "handleFilterByDate",
+    value: function handleFilterByDate(e) {
+      e.preventDefault();
+      var dateFrom = this.refs.dateFrom.value;
+      var dateTo = this.refs.dateTo.value;
+
+      if (dateFrom == null || dateFrom == undefined || dateFrom == "") {
+        dateFrom = this.convertDate(new Date(0));
+      }
+
+      if (dateTo == null || dateTo == undefined || dateTo == "") {
+        dateTo = this.convertDate(new Date()); //we can use Number.MAX_VALUE but that is overkill
+      }
+
+      var params = this.props.params;
+      console.log(params);
+      params['dateFrom'] = dateFrom; //convert to num
+
+      params['dateTo'] = dateTo;
+      console.log(params);
+      this.props.updateParamsAndPath(params, filteredSearch);
     }
   }, {
     key: "handleFilterByPrice",
@@ -49232,7 +49269,17 @@ function (_React$Component) {
         step: "0.01"
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         onClick: this.handleFilterByVolume
-      }, "FilterByVolume")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, "FilterByVolume")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Filter by date", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "datetime-local",
+        ref: "dateFrom",
+        defaultValue: this.props.params['dateFrom']
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "datetime-local",
+        ref: "dateTo",
+        defaultValue: this.props.params['dateTo']
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: this.handleFilterByDate
+      }, "FilterByDate")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         onClick: this.handleClearFilter
       }, "Clear filters"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Volume"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Date"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null)), elDatas)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, navLinks));
     }
@@ -49497,59 +49544,64 @@ function (_React$Component) {
   }, {
     key: "onCreate",
     value: function onCreate(newElData) {
-      /*
-      const self = this;
-      follow(client, root, [elDataPath]).then(response => {
-      return client({
-      method: 'POST',
-      path: response.entity._links.self.href,
-      entity: newElData,
-      headers: {'Content-Type': 'application/json'}
-      })
-      }).then(response => {
-      return follow(client, root, [{rel: self.state.path, params: self.state.params}]);
-      }).done(response => {
-      if (typeof response.entity._links.last !== "undefined") {
-      this.onNavigate(response.entity._links.last.href);
-      } else {
-      this.onNavigate(response.entity._links.self.href);
-      }
-      }); */
-      //let websocket handles the update
-      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [this.elDataPath]).done(function (response) {
-        _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
+      var _this3 = this;
+
+      var self = this;
+      _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [elDataPath]).then(function (response) {
+        return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
           method: 'POST',
           path: response.entity._links.self.href,
-          entity: newEmployee,
+          entity: newElData,
           headers: {
             'Content-Type': 'application/json'
           }
         });
-      });
+      }).then(function (response) {
+        return _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
+          rel: self.state.path,
+          params: self.state.params
+        }]);
+      }).done(function (response) {
+        if (typeof response.entity._links.last !== "undefined") {
+          _this3.onNavigate(response.entity._links.last.href);
+        } else {
+          _this3.onNavigate(response.entity._links.self.href);
+        }
+      }); //let websocket handles the update
+
+      /*follow(client, root, [this.elDataPath]).done(response => {
+            		client({
+            			method: 'POST',
+            			path: response.entity._links.self.href,
+            			entity: newElData,
+            			headers: {'Content-Type': 'application/json'}
+            		})
+            	})*/
+      //this is not working as expected
     }
   }, {
     key: "onDelete",
     value: function onDelete(elData) {
-      var _this3 = this;
+      var _this4 = this;
 
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'DELETE',
         path: elData.entity._links.self.href
       }).done(function (response) {
-        _this3.loadFromServer(_this3.state.params, _this3.state.path);
+        _this4.loadFromServer(_this4.state.params, _this4.state.path);
       });
     }
   }, {
     key: "onNavigate",
     value: function onNavigate(navUri) {
-      var _this4 = this;
+      var _this5 = this;
 
       console.log('Nav uri is: ' + navUri);
       _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
         method: 'GET',
         path: navUri
       }).then(function (elDataCollection) {
-        _this4.links = elDataCollection.entity._links;
+        _this5.links = elDataCollection.entity._links;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49559,12 +49611,12 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).done(function (elDatas) {
-        _this4.setState({
+        _this5.setState({
           elDatas: elDatas,
-          attributes: Object.keys(_this4.schema.properties),
-          params: _this4.state.params,
-          path: _this4.state.path,
-          links: _this4.links
+          attributes: Object.keys(_this5.schema.properties),
+          params: _this5.state.params,
+          path: _this5.state.path,
+          links: _this5.links
         });
       });
     }
@@ -49583,30 +49635,30 @@ function (_React$Component) {
   }, {
     key: "refreshAndGoToLastPage",
     value: function refreshAndGoToLastPage(message) {
-      var _this5 = this;
+      var _this6 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
         rel: this.state.path,
         params: this.state.params
       }]).done(function (response) {
         if (response.entity._links.last !== undefined) {
-          _this5.onNavigate(response.entity._links.last.href);
+          _this6.onNavigate(response.entity._links.last.href);
         } else {
-          _this5.onNavigate(response.entity._links.self.href);
+          _this6.onNavigate(response.entity._links.self.href);
         }
       });
     }
   }, {
     key: "refreshCurrentPage",
     value: function refreshCurrentPage(message) {
-      var _this6 = this;
+      var _this7 = this;
 
       _follow_js__WEBPACK_IMPORTED_MODULE_5___default()(_client_js__WEBPACK_IMPORTED_MODULE_4___default.a, root, [{
         rel: this.state.path,
         params: this.state.params
       }]).then(function (elDataCollection) {
-        _this6.links = elDataCollection.entity._links;
-        _this6.page = elDataCollection.entity.page;
+        _this7.links = elDataCollection.entity._links;
+        _this7.page = elDataCollection.entity.page;
         return elDataCollection.entity._embedded.elDatas.map(function (elData) {
           return _client_js__WEBPACK_IMPORTED_MODULE_4___default()({
             method: 'GET',
@@ -49616,13 +49668,13 @@ function (_React$Component) {
       }).then(function (elDataPromises) {
         return when.all(elDataPromises);
       }).then(function (elDatas) {
-        _this6.setState({
-          page: _this6.page,
+        _this7.setState({
+          page: _this7.page,
           elDatas: elDatas,
-          params: _this6.state.params,
-          path: _this6.state.path,
-          attributes: Object.keys(_this6.schema.properties),
-          links: _this6.links
+          params: _this7.state.params,
+          path: _this7.state.path,
+          attributes: Object.keys(_this7.schema.properties),
+          links: _this7.links
         });
       });
     }

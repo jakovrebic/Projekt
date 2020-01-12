@@ -16,26 +16,27 @@ export default class CreateDialog extends React.Component {
 		});
 		this.props.onCreate(newElData);
 		this.props.attributes.forEach(attribute => {
-			ReactDOM.findDOMNode(this.refs[attribute]).value = ''; // clear out the dialog's inputs
+		//maybe we do not want to clear because then default values are not set
+			ReactDOM.findDOMNode(this.refs[attribute]).value = ReactDOM.findDOMNode(this.refs[attribute]).defaultValue; // clear out the dialog's inputs
 		});
 		window.location = "#";
 	}
 
 	render() {
-        var now = new Date();
-           var utcString = now.toISOString().substring(0,19);
-           var year = now.getFullYear();
-           var month = now.getMonth() + 1;
-           var day = now.getDate();
-           var hour = now.getHours();
-           var minute = now.getMinutes();
-           var second = now.getSeconds();
-           var localDatetime = year + "-" +
-                             (month < 10 ? "0" + month.toString() : month) + "-" +
-                             (day < 10 ? "0" + day.toString() : day) + "T" +
-                             (hour < 10 ? "0" + hour.toString() : hour) + ":" +
-                             (minute < 10 ? "0" + minute.toString() : minute) +
-                             utcString.substring(16,19);
+       var now = new Date();
+       var utcString = now.toISOString().substring(0,19);
+       var year = now.getFullYear();
+       var month = now.getMonth() + 1;
+       var day = now.getDate();
+       var hour = now.getHours();
+       var minute = now.getMinutes();
+       var second = now.getSeconds();
+       var localDatetime = year + "-" +
+                         (month < 10 ? "0" + month.toString() : month) + "-" +
+                         (day < 10 ? "0" + day.toString() : day) + "T" +
+                         (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                         (minute < 10 ? "0" + minute.toString() : minute) +
+                         utcString.substring(16,19);
         //TODO modificiraj sa switch da se moze reusati
 		const inputs = this.props.attributes.map(attribute =>
 		    attribute === "time" ?

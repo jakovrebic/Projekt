@@ -59,7 +59,6 @@ export default class ElDataPage extends React.Component {
     }
 
     onCreate(newElData) {
-    /*
 		const self = this;
 		follow(client, root, [elDataPath]).then(response => {
 			return client({
@@ -76,16 +75,16 @@ export default class ElDataPage extends React.Component {
 			} else {
 				this.onNavigate(response.entity._links.self.href);
 			}
-		}); */
+		});
 		//let websocket handles the update
-		follow(client, root, [this.elDataPath]).done(response => {
+		/*follow(client, root, [this.elDataPath]).done(response => {
         		client({
         			method: 'POST',
         			path: response.entity._links.self.href,
-        			entity: newEmployee,
+        			entity: newElData,
         			headers: {'Content-Type': 'application/json'}
         		})
-        	})
+        	})*/  //this is not working as expected
 	}
 
 	onDelete(elData) {

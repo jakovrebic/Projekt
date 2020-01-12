@@ -17,6 +17,7 @@ export default class ElDataList extends React.Component{
 		this.handleClearFilter = this.handleClearFilter.bind(this)
 		this.handleFilterByPrice = this.handleFilterByPrice.bind(this)
 		this.handleFilterByVolume = this.handleFilterByVolume.bind(this)
+		this.handleFilterByDate = this.handleFilterByDate.bind(this)
 	}
 
     handleClearFilter(e){
@@ -27,6 +28,41 @@ export default class ElDataList extends React.Component{
             params = { size: pageSize}
         }
          this.props.updateParamsAndPath(params, defaultPath);
+    }
+
+    convertDate(date){
+        var utcString = date.toISOString().substring(0,19);
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return year + "-" +
+                         (month < 10 ? "0" + month.toString() : month) + "-" +
+                         (day < 10 ? "0" + day.toString() : day) + "T" +
+                         (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                         (minute < 10 ? "0" + minute.toString() : minute) +
+                         utcString.substring(16,19);
+    }
+
+    handleFilterByDate(e){
+        e.preventDefault();
+
+        let dateFrom = this.refs.dateFrom.value;
+        let dateTo = this.refs.dateTo.value;
+        if(dateFrom == null || dateFrom == undefined || dateFrom==""){
+            dateFrom = this.convertDate(new Date(0))
+        }
+        if(dateTo == null || dateTo == undefined || dateTo==""){
+            dateTo = this.convertDate(new Date())//we can use Number.MAX_VALUE but that is overkill
+        }
+        let params = this.props.params;
+        console.log(params)
+        params['dateFrom'] = dateFrom //convert to num
+        params['dateTo'] = dateTo
+        console.log(params)
+        this.props.updateParamsAndPath(params, filteredSearch);
     }
 
     handleFilterByPrice(e) {
@@ -138,6 +174,12 @@ export default class ElDataList extends React.Component{
                 <input type="number" ref="volumeFrom" defaultValue={this.props.params['volumeFrom']} min="0" step="0.01"></input>
                 <input type="number" ref="volumeTo" defaultValue={this.props.params['volumeTo']}  min="0.01" step="0.01"></input>
                 <button onClick={this.handleFilterByVolume}>FilterByVolume</button>
+            </div>
+            <div>
+                Filter by date
+                <input type="datetime-local" ref="dateFrom" defaultValue={this.props.params['dateFrom']}></input>
+                <input type="datetime-local" ref="dateTo" defaultValue={this.props.params['dateTo']} ></input>
+                <button onClick={this.handleFilterByDate}>FilterByDate</button>
             </div>
              <button onClick={this.handleClearFilter}>Clear filters</button>
 			<table>
