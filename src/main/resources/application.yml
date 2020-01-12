@@ -1,6 +1,8 @@
 spring:
   profiles: H2
-
+  jpa:
+    hibernate:
+      ddl-auto : create  #drop n create table again, good for testing, comment this in production
 ---
 
 spring:
